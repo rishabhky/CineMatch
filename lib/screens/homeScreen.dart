@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
             children: [
               Text(
-                "Hello",
+                "Hello babe",
                 style: GoogleFonts.ubuntu(color: Colors.white, fontSize: 24.0),
               ),
               Expanded(
