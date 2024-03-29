@@ -400,6 +400,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  modular_ui:
+    dependency: "direct dev"
+    description:
+      name: modular_ui
+      sha256: c7bfa2d509f6b55f45833ea5a46c7b40030c2a3c8fb26f5211eab440235ee99f
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   mongo_dart:
     dependency: "direct dev"
     description:
@@ -758,5 +766,5 @@ packages:
     source: hosted
     version: "1.0.4"
 sdks:
-  dart: ">=3.2.0 <4.0.0"
+  dart: ">=3.2.3 <4.0.0"
   flutter: ">=3.16.0"

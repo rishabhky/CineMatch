@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
+import 'package:modular_ui/modular_ui.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,8 +15,22 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   AuthService authService = AuthService();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
               child: Column(
             children: [
-              Text(
-                "Hello babe",
-                style: GoogleFonts.ubuntu(color: Colors.white, fontSize: 24.0),
-              ),
+              TabBar(
+                  controller: _tabController,
+                  dividerColor: Colors.transparent,
+                  tabs: [
+                    Tab(text: 'Popular'),
+                    Tab(text: 'Top Rated'),
+                    Tab(text: 'Upcoming'),
+                  ]),
+              SizedBox(height: 20),
               Expanded(
                 child: AppinioSwiper(
                   cardBuilder: (BuildContext context, int index) {

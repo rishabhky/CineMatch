@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Node Auth',
+      title: 'CineMatch',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

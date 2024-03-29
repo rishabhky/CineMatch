@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../models/api.dart';
+import 'package:appinio_swiper/appinio_swiper.dart';
 import '../models/movie_model.dart';
+import '../models/api.dart';
 import 'example_candidate_model.dart';
 
 class ExampleCard extends StatefulWidget {
@@ -18,22 +18,18 @@ class ExampleCard extends StatefulWidget {
 }
 
 class _ExampleCardState extends State<ExampleCard> {
-  late Future<List<Movie>> upcomingMovies;
-  late Future<List<Movie>> popularMovies;
-  late Future<List<Movie>> topRatedMovies;
+  late Future<List<Movie>> _movies;
 
   @override
   void initState() {
-    upcomingMovies = Api().getUpcomingMovies();
-    popularMovies = Api().getPopularMovies();
-    topRatedMovies = Api().getTopRatedMovies();
+    _movies = Api().getUpcomingMovies(); // Display upcoming movies by default
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-      future: upcomingMovies,
+      future: _movies,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -45,28 +41,28 @@ class _ExampleCardState extends State<ExampleCard> {
           );
         } else {
           List<Movie> movies = snapshot.data!;
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: CupertinoColors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: CupertinoColors.systemGrey.withOpacity(0.2),
-                  spreadRadius: 3,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3),
-                )
-              ],
-            ),
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Flexible(
-                  child: PageView.builder(
-                    itemCount: movies.length,
-                    itemBuilder: (context, index) {
-                      Movie movie = movies[index];
-                      return Container(
+          return AppinioSwiper(
+            cardCount: movies.length,
+            cardBuilder: (context, index) {
+              Movie movie = movies[index];
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: CupertinoColors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: CupertinoColors.systemGrey.withOpacity(0.2),
+                      spreadRadius: 3,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3),
+                    )
+                  ],
+                ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Flexible(
+                      child: Container(
                         decoration: BoxDecoration(
                           gradient: widget.candidate.color,
                           borderRadius: const BorderRadius.only(
@@ -74,46 +70,66 @@ class _ExampleCardState extends State<ExampleCard> {
                             topRight: Radius.circular(10),
                           ),
                         ),
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              movie.title,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Image.network(
+                        child: Center(
+                          child: FractionallySizedBox(
+                            widthFactor: 0.95,
+                            heightFactor: 0.95,
+                            child: Image.network(
                               'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
-                              width: 200,
-                              height: 300,
                               fit: BoxFit.cover,
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              movie.overview,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
+                          ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            movie.title,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          // Image.network(
+                          //   'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                          //   width: 200,
+                          //   height: 300,
+                          //   fit: BoxFit.cover,
+                          // ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            movie.overview,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           );
         }
       },
