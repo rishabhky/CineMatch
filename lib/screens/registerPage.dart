@@ -1,7 +1,4 @@
-import 'dart:convert';
 import 'package:expense/services/auth_services.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -56,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     fontSize: 28.0,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Text("Welcome to the community !",
@@ -84,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       },
                                           borderFocusColor:
                                               Colors.grey.shade800,
-                                          prefixIcon: Icon(Icons.person),
+                                          prefixIcon: const Icon(Icons.person),
                                           borderColor: Colors.grey.shade700,
                                           prefixIconColor: Colors.grey.shade800,
                                           hintColor: Colors.grey.shade600,
@@ -92,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           contentPadding: 20,
                                           borderRadius: 10,
                                           showPrefixIcon: true),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 20,
                                       ),
                                       FormHelper.inputFieldWidget(
@@ -114,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                           email = onSavedVal;
                                         },
                                         borderFocusColor: Colors.grey.shade800,
-                                        prefixIcon: Icon(Icons.email),
+                                        prefixIcon: const Icon(Icons.email),
                                         borderColor: Colors.grey.shade700,
                                         prefixIconColor: Colors.grey.shade800,
                                         hintColor: Colors.grey.shade600,
@@ -123,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         borderRadius: 10,
                                         showPrefixIcon: true,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 20,
                                       ),
                                       FormHelper.inputFieldWidget(
@@ -137,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       },
                                           borderFocusColor:
                                               Colors.grey.shade800,
-                                          prefixIcon: Icon(Icons.password),
+                                          prefixIcon: const Icon(Icons.password),
                                           borderColor: Colors.grey.shade700,
                                           prefixIconColor: Colors.grey.shade800,
                                           hintColor: Colors.grey.shade600,
@@ -155,7 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                               icon: Icon(hidePassword
                                                   ? Icons.visibility_off
                                                   : Icons.visibility))),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 25,
                                       ),
                                       FormHelper.submitButton(

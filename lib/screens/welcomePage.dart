@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:get/get.dart';
 import 'package:expense/utills/routes.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -31,13 +30,13 @@ class _WelcomePageState extends State<WelcomePage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text("Welcome to CineMatch",
                   style: GoogleFonts.ubuntu(
                       color: Colors.grey.shade900,
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold)),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Padding(
@@ -49,12 +48,12 @@ class _WelcomePageState extends State<WelcomePage> {
                         color: Colors.grey.shade600.withOpacity(0.9),
                         fontSize: 16.0)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               ElevatedButton(
                   style: TextButton.styleFrom(
-                    minimumSize: Size(340, 60),
+                    minimumSize: const Size(340, 60),
                     backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -70,13 +69,13 @@ class _WelcomePageState extends State<WelcomePage> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
                   style: TextButton.styleFrom(
                       elevation: 0,
-                      minimumSize: Size(340, 60),
+                      minimumSize: const Size(340, 60),
                       backgroundColor: Colors.grey.shade500,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),

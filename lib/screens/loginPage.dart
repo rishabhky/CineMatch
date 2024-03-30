@@ -1,11 +1,9 @@
-import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
-import 'package:http/http.dart' as http;
 import 'package:expense/services/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
@@ -58,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Text(
@@ -99,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                                   email = onSavedVal;
                                 },
                                 borderFocusColor: Colors.grey.shade800,
-                                prefixIcon: Icon(Icons.person),
+                                prefixIcon: const Icon(Icons.person),
                                 borderColor: Colors.grey.shade700,
                                 prefixIconColor: Colors.grey.shade800,
                                 hintColor: Colors.grey.shade600,
@@ -108,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: 10,
                                 showPrefixIcon: true,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               FormHelper.inputFieldWidget(
@@ -124,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                                   password = onSavedVal;
                                 },
                                 borderFocusColor: Colors.grey.shade800,
-                                prefixIcon: Icon(Icons.password),
+                                prefixIcon: const Icon(Icons.password),
                                 borderColor: Colors.grey.shade700,
                                 prefixIconColor: Colors.grey.shade800,
                                 hintColor: Colors.grey.shade600,
@@ -144,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                                       : Icons.visibility),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Align(
@@ -168,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 25,
                               ),
                               FormHelper.submitButton(
@@ -184,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                                 borderRadius: 10,
                                 borderColor: Colors.black,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 25,
                               ),
                               RichText(

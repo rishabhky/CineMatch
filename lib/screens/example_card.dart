@@ -7,9 +7,11 @@ import 'example_candidate_model.dart';
 
 class ExampleCard extends StatefulWidget {
   final ExampleCandidateModel candidate;
+  final int index;
 
   const ExampleCard({
     Key? key,
+    this.index = 0,
     required this.candidate,
   }) : super(key: key);
 
@@ -18,21 +20,25 @@ class ExampleCard extends StatefulWidget {
 }
 
 class _ExampleCardState extends State<ExampleCard> {
-  late Future<List<Movie>> _movies;
+  late List<Future<List<Movie>>>? _moviesList;
 
   @override
   void initState() {
-    _movies = Api().getUpcomingMovies(); // Display upcoming movies by default
+    _moviesList = [
+      Api().getPopularMovies(),
+      Api().getTopRatedMovies(),
+      Api().getUpcomingMovies(),
+    ]; // Display upcoming movies by default
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-      future: _movies,
+      future: _moviesList![widget.index],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasError) {

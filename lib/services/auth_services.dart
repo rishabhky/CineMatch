@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:expense/screens/welcomePage.dart';
 import 'package:provider/provider.dart';
 import 'package:expense/providers/user_provider.dart';
-import 'package:expense/utills/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:expense/utills/constants.dart';
 import 'package:expense/utills/utils.dart';

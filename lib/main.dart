@@ -3,7 +3,6 @@ import 'package:expense/screens/homeScreen.dart';
 import 'package:expense/screens/loginPage.dart';
 import 'package:expense/screens/registerPage.dart';
 import 'package:expense/screens/welcomePage.dart';
-import 'package:expense/services/auth_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,9 +36,9 @@ class MyApp extends StatelessWidget {
         },
       ),
       routes: {
-        '/login': (context) => LoginPage(), // Add this line
-        '/register': (context) => RegisterPage(),
-        '/home': (context) => HomeScreen(),
+        '/login': (context) => const LoginPage(), // Add this line
+        '/register': (context) => const RegisterPage(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
