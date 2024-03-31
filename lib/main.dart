@@ -1,4 +1,5 @@
 import 'package:expense/providers/user_provider.dart';
+import 'package:expense/screens/friends.dart';
 import 'package:expense/screens/homeScreen.dart';
 import 'package:expense/screens/loginPage.dart';
 import 'package:expense/screens/registerPage.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(), // Add this line
         '/register': (context) => const RegisterPage(),
         '/home': (context) => const HomeScreen(),
+        '/friends': (context) => const FriendsPage(),
       },
     );
   }
